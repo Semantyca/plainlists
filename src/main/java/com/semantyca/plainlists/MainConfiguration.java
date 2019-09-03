@@ -1,4 +1,4 @@
-package com.semantyca.admin;
+package com.semantyca.plainlists;
 
 import com.toonext.PrimaryConfiguration;
 

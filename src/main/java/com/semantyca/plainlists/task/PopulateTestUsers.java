@@ -1,4 +1,4 @@
-package com.semantyca.admin.task;
+package com.semantyca.plainlists.task;
 
 import com.toonext.core.api.User;
 import com.toonext.core.jdbi.IUserDAO;

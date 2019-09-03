@@ -1,4 +1,4 @@
-package com.semantyca.admin.resources;
+package com.semantyca.plainlists.resources;
 
 import com.toonext.core.api.User;
 import io.dropwizard.auth.Auth;

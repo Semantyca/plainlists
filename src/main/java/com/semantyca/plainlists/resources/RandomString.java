@@ -1,4 +1,4 @@
-package com.semantyca.admin.resources;
+package com.semantyca.plainlists.resources;
 
 import java.security.SecureRandom;
 import java.util.Locale;

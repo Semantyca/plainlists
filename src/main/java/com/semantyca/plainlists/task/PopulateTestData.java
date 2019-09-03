@@ -1,4 +1,4 @@
-package com.semantyca.admin.task;
+package com.semantyca.plainlists.task;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;

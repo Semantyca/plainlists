@@ -1,8 +1,8 @@
-package com.semantyca.admin;
+package com.semantyca.plainlists;
 
 import com.toonext.ServerStarter;
 
-public class Server extends ServerStarter<MainConfiguration> {
+public class Server extends ServerStarter<com.semantyca.admin.MainConfiguration> {
 
     public static void main(String[] args) throws Exception {
         new Server().run(args);
@@ -10,7 +10,7 @@ public class Server extends ServerStarter<MainConfiguration> {
 
     @Override
     public String getName() {
-        return "administrator";
+        return "plainlists";
     }
 
 }
