@@ -1,6 +1,8 @@
 package com.semantyca.plainlists;
 
+import com.semantyca.plainlists.task.PopulateTestData;
 import com.toonext.ServerStarter;
+import io.dropwizard.setup.Environment;
 
 public class Server extends ServerStarter<com.semantyca.admin.MainConfiguration> {
 
@@ -13,4 +15,8 @@ public class Server extends ServerStarter<com.semantyca.admin.MainConfiguration>
         return "plainlists";
     }
 
+    public void run(com.semantyca.admin.MainConfiguration config, Environment environment) {
+        super.run(config, environment);
+        environment.admin().addTask(new PopulateTestData(getJdbi()));
+    }
 }

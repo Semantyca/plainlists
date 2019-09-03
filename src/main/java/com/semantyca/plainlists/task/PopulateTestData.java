@@ -4,21 +4,22 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.toonext.core.api.User;
-import com.toonext.core.jdbi.ILanguageDAO;
-import com.toonext.domain.user.IUser;
-import io.dropwizard.servlets.tasks.Task;
+import com.semantyca.plainlists.api.Label;
+import com.semantyca.plainlists.dao.ILabelDAO;
+import com.toonext.core.task.CommonTask;
+import com.toonext.domain.user.SuperUser;
 import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.core.statement.UnableToExecuteStatementException;
 
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.time.ZonedDateTime;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 
-public class PopulateTestData extends Task {
+public class PopulateTestData extends CommonTask {
     private final Jdbi dbi;
 
 
@@ -31,27 +32,32 @@ public class PopulateTestData extends Task {
     @Override
     public void execute(Map<String, List<String>> map, PrintWriter printWriter) throws Exception {
         ObjectMapper jsonMapper = new ObjectMapper();
+        ILabelDAO dao = dbi.onDemand(ILabelDAO.class);
 
-        ILanguageDAO dao = dbi.onDemand(ILanguageDAO.class);
-        dao.createTable();
+        try {
+            dao.createTable();
+        } catch (
+                UnableToExecuteStatementException e) {
+            logDatabaseException(e, "42P07");
+        }
 
 
         ObjectMapper yamlMapper = new ObjectMapper(new YAMLFactory());
         yamlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        List<IUser> users = new ArrayList<>();
         InputStream is = PopulateTestData.class.getResourceAsStream("/testData.yml");
         JsonNode rootNode = yamlMapper.readTree(is);
-        JsonNode drNode = rootNode.path("users");
+        JsonNode drNode = rootNode.path("labels");
         Iterator<JsonNode> itr = drNode.elements();
         while (itr.hasNext()) {
-            IUser user = yamlMapper.treeToValue(itr.next(), User.class);
-            users.add(user);
-
-       //     String jsonText = jsonMapper.writeValueAsString(user.getLocName());
-         //   dao.insert(user.getCode(), user.isCyrillic(), user.isOn(), ZonedDateTime.now(), SuperUser.ID, jsonText, user.getName(),
-          //          user.getStance(),ZonedDateTime.now(),"title", SuperUser.ID);
+            Label label = yamlMapper.treeToValue(itr.next(), Label.class);
+            ZonedDateTime now = ZonedDateTime.now();
+            label.setRegDate(now);
+            label.setLastModifiedDate(now);
+            label.setAuthor(SuperUser.ID);
+            label.setLastModifier(SuperUser.ID);
+            dao.insert(label.getColor(), label.getCategory(), label.isHidden(), jsonMapper.writeValueAsString(label.getLocName()), label.getIdentifier(), label.getLastModifiedDate(),
+                    label.getLastModifier(), label.getRegDate(), label.getTitle(), label.getAuthor());
         }
-
-
     }
 }
+

@@ -1,0 +1,19 @@
+labels:
+  - identifier: favourite
+    color: '#d94600'
+    locName:
+      ENG: Favourite
+      RUS: Избранный
+      POR: Favourito
+  - identifier: non-academic
+    color: '#3cd1c2'
+    locName:
+      ENG: Non-academic
+      RUS: Не академическая
+      POR: Nao academico
+  - identifier: academic
+    color: '#ffaa2c'
+    locName:
+      ENG: Academic
+      RUS: Академическая
+      POR: Academico

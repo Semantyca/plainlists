@@ -52,12 +52,12 @@ public class SessionResource {
         ses = getSession(user);
         try {
             outcome.setTitle(user.getUserName());
-            //   outcome.addPayload("orgLogo", Environment.logo);
-            //   String template = Environment.templates.getTemplate(MessagingType.SITE, "about", ses.getLang());
+            //   outcome.addPayload("orgLogo", GlobalEnv.logo);
+            //   String template = GlobalEnv.templates.getTemplate(MessagingType.SITE, "about", ses.getLang());
             //   outcome.addPayload("about",  TemplatesSet.getRenderedTemplate(template).render());
-            //    outcome.addPayload("orgName", Environment.orgName);
-            //    outcome.addPayload("orgWallpaper", Environment.wallpaper);
-            //   outcome.addPayload("orgColor", Environment.color);
+            //    outcome.addPayload("orgName", GlobalEnv.orgName);
+            //    outcome.addPayload("orgWallpaper", GlobalEnv.wallpaper);
+            //   outcome.addPayload("orgColor", GlobalEnv.color);
             //    outcome.addPayload("serverVersion", EnvConst.SERVER_VERSION);
             //    outcome.addPayload("build", Server.compilationTime);
             ILanguageDAO languageDAO = jdbi.onDemand(ILanguageDAO.class);
