@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.semantyca.plainlists.api.Label;
-import com.toonext.localization.constants.LanguageCode;
+import com.toonext.constants.LanguageCode;
 import org.jdbi.v3.core.mapper.ColumnMapper;
 import org.jdbi.v3.core.statement.StatementContext;
 import org.postgresql.util.PGobject;

@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.semantyca.plainlists.api.Label;
 import com.semantyca.plainlists.dao.ILabelDAO;
+import com.toonext.core.api.SuperUser;
 import com.toonext.core.task.CommonTask;
-import com.toonext.domain.user.SuperUser;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.statement.UnableToExecuteStatementException;
 
