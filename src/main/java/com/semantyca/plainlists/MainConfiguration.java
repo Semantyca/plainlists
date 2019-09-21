@@ -1,7 +1,7 @@
 package com.semantyca.plainlists;
 
-import com.toonext.PrimaryConfiguration;
+import com.toonext.DefaultConfiguration;
 
-public class MainConfiguration extends PrimaryConfiguration {
+public class MainConfiguration extends DefaultConfiguration {
 
 }

@@ -24,7 +24,7 @@ public class PopulateTestData extends CommonTask {
 
 
     public PopulateTestData(Jdbi jdbi) {
-        super("populate_test_data");
+        super("populate_plainlists_data");
         this.dbi = jdbi;
     }
 
